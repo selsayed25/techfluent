@@ -1,27 +1,33 @@
 import * as React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { Link, /* useStaticQuery, graphql */ } from 'gatsby'
 import {
    container,
    heading,
    navLinks,
    navLinkItem,
    navLinkText,
-	siteTitle,
 } from './layout.module.css'
+import { StaticImage } from 'gatsby-plugin-image'
 
 const Layout = ({ pageTitle, children }) => {
+   /*
    const data = useStaticQuery(graphql`
 	query {
-		site {
-			siteMetadata {
-				title
-			}
-		}
-	}
+      site {
+         siteMetadata {
+            logo
+         }
+      }
+   } 
 	`)
+   */
 	return (
       <div className = { container }>
-         <header classname = { siteTitle }>{ data.site.siteMetadata.title }</header>
+         <StaticImage 
+            src = "../images/techfluentlogo.png"
+            height = "70"
+         />
+         <center>
 			<nav>
             <ul className = { navLinks }>
                <li className = { navLinkItem }>
@@ -41,8 +47,9 @@ const Layout = ({ pageTitle, children }) => {
 					</li>
             </ul>
          </nav>
+         </center>
          <main>
-            <h1 className = { heading }>{ pageTitle }</h1>
+            <center><h1 className = { heading }>{ pageTitle }</h1></center>
             { children }
          </main>
       </div>
